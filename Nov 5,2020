@@ -1,0 +1,35 @@
+Sum of Numbers in a  String/////////consecutive numbers are consirdered as 1......abc24jf6 = 30 (24 +6)
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc= new Scanner(System.in);
+		
+		int T=sc.nextInt();
+		
+		while(T-->0)
+		{
+		    String s =sc.next();
+		    
+		    String temp="0";
+		      int sum=0;
+		    for(int i=0;i<s.length();i++)
+		    {
+		        if(Character.isDigit(s.charAt(i)))
+		        temp+=s.charAt(i);
+		        
+		        else
+		        {
+		            sum+=Integer.parseInt(temp);
+		            
+		            temp="0";
+		        }
+		        
+		    }
+		 
+		    System.out.println(sum+Integer.parseInt(temp));;
+		}
+	}
+}
