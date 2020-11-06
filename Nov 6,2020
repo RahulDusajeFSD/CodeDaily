@@ -1,0 +1,51 @@
+Input:
+2
+i.like.this.program.very.much
+pqr.mno
+
+Output:
+much.very.program.this.like.i
+mno.pqr
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int T=sc.nextInt();
+		
+		while(T-->0)
+		{
+		    
+		    String S=sc.next();
+		    String delimiter=".";
+		    
+		    
+		    StringTokenizer st=new StringTokenizer(S,delimiter);
+		    
+		    Stack<String> stack=new Stack<>();
+		    
+		    while(st.hasMoreTokens())
+		    {
+		        stack.push(st.nextToken());
+		        
+		        
+		    }
+		    
+		    while(stack.size() > 1)
+		    {
+		        System.out.print(stack.pop()+".");
+		    }
+		    
+		    System.out.print(stack.pop());
+		    
+		    System.out.println();
+		    
+		}
+		
+	}
+}
