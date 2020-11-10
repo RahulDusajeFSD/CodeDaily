@@ -1,0 +1,82 @@
+class Solution {
+    String removeDups(String S) {
+        
+        LinkedHashSet<Character> lhs=new LinkedHashSet<>();      // LinkedHAshSet maintains insertion order....unlike hashset and TreeSet
+        
+        for(int i=0;i<S.length();i++)
+        lhs.add(S.charAt(i));
+        
+        String result="";
+        
+        for(Character c:lhs)
+        result+=c;
+        
+        return result;
+    }
+}
+
+
+class Solution {
+    Node deleteMid(Node head) {
+
+    Node slow=head;
+    Node temp=head;
+    Node fast=head;
+    
+    while(fast!=null && fast.next!=null)
+    {
+        slow=slow.next;
+        fast=fast.next.next;
+        
+        
+    }
+
+   while(temp.next!=slow)
+   {
+       temp=temp.next;
+   }
+   
+   temp.next=slow.next;
+   
+   return head;
+   
+ 
+    
+    
+    }
+}
+
+
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int T=sc.nextInt();
+		
+		
+		
+		while(T-->0)
+		{
+		    int min=Integer.MAX_VALUE;
+		    
+		    int N=sc.nextInt();
+		    
+		    int[] arr=new int[N];
+		    
+		    for(int i=0;i<N;i++)
+		    arr[i] =sc.nextInt();
+		    
+		    Arrays.sort(arr);
+		    
+		    for(int i=1;i<N;i++)
+		    {
+		        if(arr[i]-arr[i-1] <min)
+		        min=arr[i]-arr[i-1];
+		        
+		    }
+		    
+		    System.out.println(min);
+		}
+	}
+}
