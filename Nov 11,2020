@@ -1,0 +1,65 @@
+
+class Solution
+{
+    public int findPeakElement(List<Integer> a)
+    {
+        PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder());
+        
+        for(Integer d:a)
+        pq.add(d);
+        
+        return pq.poll();
+    }
+}
+
+
+class GFG {
+	public static void main (String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int T=sc.nextInt();
+		
+		while(T-->0)
+		{
+		    
+		    String s1=sc.next();
+		    
+		    String s2=sc.next();
+		    
+		    String result="";
+		    
+		    HashSet<Character> hs=new HashSet<>();
+		    
+		    for(int i=0;i<s2.length();i++)
+		    hs.add(s2.charAt(i));
+		    
+		    
+		    for(int i=0;i<s1.length();i++)
+		    {
+		        if(!hs.contains(s1.charAt(i)))
+		        result+=s1.charAt(i);
+		    }
+		    
+		    System.out.println(result);
+		}
+	}
+}
+
+
+class Solution {
+    String firstAlphabet(String S) {
+        
+        String result="";
+        
+        result+=S.charAt(0);
+        
+        for(int i=1;i<S.length();i++)
+        {
+            if(S.charAt(i)==' ')
+            result+=S.charAt(i+1);
+        }
+        
+        return result;
+    }
+};
