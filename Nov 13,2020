@@ -1,0 +1,72 @@
+class Tree
+{
+    int countLeaves(Node node) 
+    {
+        
+         if(node==null)
+         return 0;
+         
+         if(node.left==null && node.right==null)
+         return 1;
+         
+       
+         
+        int left=countLeaves(node.left);
+        int right=countLeaves(node.right);
+            
+        return left+right;
+    }
+}
+
+
+MINIMUM ELEMENT IN BINARY TREE-----------
+class Tree
+{
+     ArrayList<Integer> arr=new ArrayList<>();
+
+    
+    ArrayList<Integer> storeInList(Node node)
+    {
+        if(node==null)
+        return null;
+     
+     storeInList(node.left);
+     arr.add(node.data);
+    storeInList(node.right);
+     
+     return arr;
+     
+    }
+    int minValue(Node node)
+    {
+     ArrayList<Integer> arr2=storeInList(node);
+     
+     Collections.sort(arr2);
+     
+     return arr2.get(0);
+     
+    }
+}
+
+
+class Tree
+{
+    // Return a list containing the inorder traversal of the given tree
+    
+    ArrayList<Integer> ar=new ArrayList<>();
+    ArrayList<Integer> inOrder(Node root)
+    {
+        
+        if(root==null)
+        return ar;
+        
+        inOrder(root.left);
+        ar.add(root.data);
+        inOrder(root.right);
+        
+        return ar;
+        
+    }
+    
+    
+}
