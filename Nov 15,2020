@@ -1,0 +1,51 @@
+Select * from CITY where POPULATION > 100000 and COUNTRYCODE = "USA"
+select NAME from CITY where POPULATION > 120000 and COUNTRYCODE = "USA"]
+
+class Solution
+{
+    // Return the minimum absolute difference between any tree node and the integer K
+    
+    static ArrayList<Integer> ar =new ArrayList<>();
+    
+    static int maxDiff(Node  root, int K) 
+    { 
+        
+    ArrayList<Integer> ar2= closestElement(root);
+        
+    int length=ar2.size();
+    
+    int min =1000;
+    
+    Collections.sort(ar2);
+    
+    // if(K <= ar2.get(0))
+    // return K-ar2.get(0);
+    
+    if(K >= ar2.get(length-1))
+    return K-ar2.get(length-1);
+    
+    for(int e:ar2)
+    {
+        if(K==e)
+        return 0;
+        
+        int diff =Math.abs(e-K);
+        if(diff<min)
+        min=diff;
+    }
+       return min;
+        
+    } 
+    
+   static ArrayList<Integer> closestElement(Node root)
+    {
+        if(root==null)
+        return ar;
+        
+        closestElement(root.left);
+        ar.add(root.data);
+        closestElement(root.right);
+        
+        return ar;
+    }
+}
