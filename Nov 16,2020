@@ -1,0 +1,37 @@
+select * from city where Id="1661"
+select * from city where countrycode="JPN"
+
+
+class Tree
+{
+
+	boolean isIdentical(Node root1, Node root2)
+	{
+	    if(root1==null && root2==null)
+	    return true;
+	    
+	    if(root1!=null && root2!=null)
+	     return (root1.data==root2.data && 
+	    isIdentical(root1.left,root2.left) &&
+	    isIdentical(root1.right,root2.right));
+	    
+	    return false;
+	}
+  
+  
+  class GfG
+{
+    public int SumofLeafNodes(Node root)
+    {
+        if(root==null)
+        return 0;
+        
+        if(root.left==null && root.right==null && root!=null) 
+        return root.data;
+        
+        int leftLeaf=SumofLeafNodes(root.left);
+        int rightLeaf=SumofLeafNodes(root.right);
+        
+        return leftLeaf+rightLeaf;
+    }
+}
