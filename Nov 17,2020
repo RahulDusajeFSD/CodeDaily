@@ -1,0 +1,90 @@
+  for(int i=0;i<nums.length;i++)
+        {
+            for(int j=i+1;j<nums.length;j++)
+            {
+                if(nums[i]+nums[j]==target)
+                {
+                    return new int[]{i,j};
+                }
+            }
+        }
+        
+        return null;
+        
+        
+ /**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        int size1=0;
+        int size2=0;
+        ListNode l3=l1;
+        ListNode l4=l2;
+        while(l3!=null)
+        {
+            size1++;l3=l3.next;
+        }
+         while(l4!=null)
+        {
+            size2++;l4=l4.next;
+        }
+      
+        if(l1.val==0 && l2.val==0 && size1==1 && size2==1)
+            return new ListNode(0);
+        
+        StringBuilder str1=new StringBuilder();
+        StringBuilder str2=new StringBuilder();
+        ListNode p,dummy = new ListNode();
+        p=dummy;
+        while(l1!=null)
+        {
+            str1.append(l1.val);
+            l1=l1.next;
+        }
+        
+          while(l2!=null)
+        {
+            str2.append(l2.val);
+            l2=l2.next;
+        }
+        
+        
+        StringBuilder str3=str1.reverse();
+         StringBuilder str4=str2.reverse();
+        
+        String str5=str3.toString();
+        String str6=str4.toString();
+        
+        Long i1=Long.parseLong(str5);
+        Long i2=Long.parseLong(str6);
+        
+        Long i3=i1+i2;
+        
+        
+        while(i3!=0)
+        {
+            Long k=i3%10;
+            int h=k.intValue();
+            p.next=new ListNode(h);
+            
+            
+            i3=i3/10;
+            
+            
+            p=p.next;
+        }
+        
+      //  System.out.println(reverse);
+        return dummy.next;
+        
+    }
+}
