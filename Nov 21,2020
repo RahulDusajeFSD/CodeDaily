@@ -1,0 +1,33 @@
+select distinct city from station where city like '%a' or city like '%e' or city like '%i' or city like '%o' or city like '%u'
+select distinct city from station where left(city,1) in ('a','e','i','o','u') and right(city,1) in  ('a','e','i','o','u')
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+        
+        
+        if(s==" ")
+            return 0;
+        
+        
+        int count=0;
+        boolean flag=false;
+        
+        for(int i=s.length()-1;i>=0;i--)
+        {
+            if(Character.isLetter(s.charAt(i)))
+            {flag=true;
+                count++;
+            }
+            else
+            {
+                if(flag==true)
+                    return count;
+                    
+                
+            }
+            
+        }
+        
+        return count;
+    }
+}
