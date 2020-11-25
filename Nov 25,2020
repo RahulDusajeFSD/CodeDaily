@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    public String reverseWords(String s) {
+        
+        StringTokenizer st =new StringTokenizer(s);
+        Stack<String> stack = new Stack<>(); 
+        String result="";
+        while(st.hasMoreTokens())
+        {
+            stack.push(st.nextToken());
+        }
+        
+        while(stack.size()>1)
+        {
+            result+=stack.pop() +" ";
+        }
+        
+        result+=stack.pop();
+        
+        return result;
+    }
+}
+
+class Solution {
+    public int findMin(int[] nums) {
+        
+        Arrays.sort(nums);
+        
+        return nums[0];
+    }
+}
