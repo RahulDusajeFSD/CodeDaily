@@ -1,0 +1,99 @@
+select sum(population) from city where district = 'california'
+select avg(population) from city where district='california'
+select round(avg(population)) from city 
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	
+	Scanner sc =new Scanner(System.in);
+	
+	int T=sc.nextInt();
+	
+	while(T-->0)
+	{
+	    int N= sc.nextInt();
+	    
+	    int[] A=new int[N];
+	    int[] B=new int[N];
+	    ArrayList<Integer> c =new ArrayList<>();
+	    
+	    int count=0;
+	    
+	    for(int i=0;i<N;i++)
+	    A[i]=sc.nextInt();
+	    
+	     for(int i=0;i<N;i++)
+	     B[i]=sc.nextInt();
+	    
+        for(int i=0;i<N;i++)
+        c.add(A[i]);
+        
+        for(int i=0;i<N;i++)
+        c.add(B[i]);
+	       
+	   Collections.sort(c);
+	   int s1= c.size()/2;
+	   int s2= c.size()/2-1;
+	   
+	   System.out.println(c.get(s2)+c.get(s1));
+
+	    
+	}
+	}
+}
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        
+     HashMap<Integer,Integer> map = new HashMap<>();
+        
+    for(int i=0;i<nums.length;i++)
+    { 
+        if(!map.containsKey(nums[i]))
+            map.put(nums[i],1);
+        else
+        map.put(nums[i],map.get(nums[i])+1);
+        
+    }
+    int k=0;
+    for(Map.Entry<Integer,Integer> entry:map.entrySet())
+    {
+        if(entry.getValue()==1)
+        {
+            k=entry.getKey();
+            
+            break;
+        }
+    }
+
+    return k;
+    }
+}
+
+class Solution {
+    int countTriplet(int arr[], int n) {
+        HashSet<Integer> hs=new HashSet<>();
+        
+        for(int i=0;i<n;i++)
+        hs.add(arr[i]);
+        
+        int count=0;
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(hs.contains(arr[i]+arr[j]))
+                    count++;
+            }
+        }
+        
+        return count;
+    }
+}
+
+
