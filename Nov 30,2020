@@ -1,0 +1,59 @@
+class Solution {
+    public boolean search(int[] nums, int target) {
+     
+        HashSet<Integer> hs=new HashSet<>();
+        
+        for(int i=0;i<nums.length;i++)
+            hs.add(nums[i]);
+        
+        if(hs.contains(target))
+            return true;
+        
+        return false;
+    }
+}
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        
+        LinkedHashMap<Integer,Integer> lmap = new LinkedHashMap<>();
+        ListNode temp=new ListNode(0);
+        ListNode dummy=temp;
+        
+        while(head!=null)
+        {
+            if(!lmap.containsKey(head.val))
+                lmap.put(head.val,1);
+            else
+                lmap.put(head.val,lmap.get(head.val)+1);
+            
+            head=head.next;
+        }
+        
+      //  System.out.println(lmap);
+        
+        for(Map.Entry<Integer,Integer> entry:lmap.entrySet())
+        {
+            if(entry.getValue()==1)
+            {
+                temp.next = new ListNode(entry.getKey());
+                temp=temp.next;
+            
+        }
+        
+    }
+                return dummy.next;
+
+    }
+}
