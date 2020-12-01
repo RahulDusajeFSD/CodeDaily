@@ -1,0 +1,80 @@
+select round(sum(LAT_N),2),round(sum(LONG_W),2) from station;
+select round(sum(lat_n),4) from station where lat_n between 38.7880 and 137.235
+select round(lat_n,4) from station where lat_n < 137.2345 order by lat_n desc limit 1
+select round(long_w,4) from station where lat_n = (select max(lat_n) from station where lat_n < 137.2345)
+select round(min(lat_n),4) from station where lat_n > 38.7780 
+select round(long_w,4) from station where lat_n=(select min(lat_n) from station where lat_n > 38.7780)
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+     
+        if(nums.length==1 && target==nums[0])
+            return new int[]{0,0};
+        
+        if(nums.length==0)
+            return new int[]{-1,-1};
+        
+        
+        int count=0;
+        int l=0;
+        for(int i=0;i<nums.length;i++)
+        { 
+            if(target==nums[i])
+            {     count++;
+             
+                    l=i;
+                
+            }
+        }
+        
+        if(count>2)
+        {
+            for(int i=0;i<nums.length;i++)
+            { 
+                
+            if(target==nums[i])
+            {     
+                return new int[]{i,l};
+                
+            }
+        }
+        }
+        
+        if(count==nums.length)
+            return new int[]{0,nums.length-1};
+        
+        
+        if(count==1)
+        {
+            for(int i=0;i<nums.length;i++)
+            { 
+            if(target==nums[i])
+            {     
+                return new int[]{i,i};
+                
+            }
+        }
+            
+            
+        }
+        for(int i=0;i<nums.length;i++)
+        {
+            for(int j=i+1;j<nums.length;j++)
+            {
+                if(nums[i]==nums[j] && nums[i]==target)
+                    return new int[]{i,j};
+            }
+        }
+        
+        return new int[]{-1,-1};
+    }
+}
+
+
+class Solution {
+    public double myPow(double x, int n) {
+
+        return Math.pow(x,n);
+        
+    }
+}
