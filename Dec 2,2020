@@ -1,0 +1,96 @@
+select round(abs(max(lat_n)-min(lat_n)) + abs(max(long_w)-min(long_w)),4) from station
+select round(sqrt(power(abs(max(lat_n)-min(lat_n)),2) + power(abs(max(long_w)-min(long_w)),2)),4) from station
+
+// Power(a,b)...(4,2) = 16
+// sqrt()
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        HashSet<Character> hs=new HashSet<>();
+        
+        for(int i=0;i<s.length();i++)
+            hs.add(s.charAt(i));
+        
+        if(s.length()!=t.length())
+            return false;
+        
+        for(int i=0;i<t.length();i++)
+        {
+            if(!hs.contains(t.charAt(i)))
+                return false;
+        }
+        
+        if(s==" " || t==" ")
+            return false;
+        
+        int sum1=0;
+        int sum2=0;
+        
+       for(int i=0;i<s.length();i++)
+             sum1+=(int)s.charAt(i);
+        
+        
+        for(int i=0;i<t.length();i++)
+            sum2+=(int)t.charAt(i);
+        
+        if(sum1!=sum2)
+            return false;
+        
+        return true;
+        
+        
+    }
+}
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		
+		Scanner sc =new Scanner(System.in);
+		
+		int T=sc.nextInt();
+		
+		while(T-->0)
+		{
+		    int m=sc.nextInt();
+		    
+		    int n=sc.nextInt();
+		    
+		    int[] arr1=new int[m];
+		    
+		    int[] arr2=new int[n];
+		    
+		    for(int i=0;i<m;i++)
+		    arr1[i]=sc.nextInt();
+		    
+		    boolean flag=true;
+		    
+		    for(int i=0;i<n;i++)
+		    arr2[i]=sc.nextInt();
+		 
+		    HashSet<Integer> hs =new HashSet<>();
+		    
+		    for(int i=0;i<m;i++)
+		    hs.add(arr1[i]);
+		    
+		    for(int i=0;i<n;i++)
+		    {
+		        if(!hs.contains(arr2[i]))
+		          {  flag=false;
+		            break; }
+		    }
+		    
+		    if(!flag)
+		    System.out.println("No");
+		    else
+		    System.out.println("Yes");
+		    
+		}
+	}
+}
