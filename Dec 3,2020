@@ -1,0 +1,58 @@
+select count(*) from city where population > 100000
+select sum(city.population) from city,country where continent = 'Asia' and city.countrycode = country.code
+select country.continent,floor(avg(city.population)) from city,country where city.countrycode = country.code group by country.continent 
+
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        
+        PriorityQueue<Integer> pq =new PriorityQueue<>(Collections.reverseOrder());
+        
+        for(int i:nums)
+            pq.add(i);
+        
+        for(int i=1;i<k;i++)
+            pq.poll();
+        
+        return pq.poll();
+    }
+}
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode sortList(ListNode head) {
+        
+        ListNode temp= new ListNode(0);
+        ListNode dummy=temp;
+        ArrayList<Integer> ar =new ArrayList<>();
+        
+        
+        while(head!=null)
+        {
+            ar.add(head.val);
+            head=head.next;
+        }
+        
+        
+        Collections.sort(ar);
+        
+        for(int i:ar)
+        {
+            temp.next=new ListNode(i);
+            temp=temp.next;
+        }
+        
+        return dummy.next;
+        
+    }
+}
