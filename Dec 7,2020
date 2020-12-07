@@ -1,0 +1,90 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> repeatedNumber(final List<Integer> A) {
+        
+        ArrayList<Integer> ar=new ArrayList<>();
+        
+        HashMap<Integer,Integer> map =new HashMap<>();
+        int totalSum=0;
+        
+        HashSet<Integer> hs =new HashSet<>();
+        
+        
+        int len = A.size();
+         int sum=0;
+        for(int i=1;i<=len;i++)
+        totalSum+=i;
+        
+        for(int i=0;i<A.size();i++)
+        hs.add(A.get(i));
+        
+        for(int i:hs)
+        sum+=i;
+        
+        for(int i=0;i<A.size();i++)
+        {
+            if(!map.containsKey(A.get(i)))
+            map.put(A.get(i),1);
+            else
+            map.put(A.get(i),map.get(A.get(i))+1);
+        }
+       
+        for(Map.Entry<Integer,Integer> entry:map.entrySet())
+        {
+            if(entry.getValue()==2)
+                ar.add(entry.getKey());
+        }
+        
+        ar.add(totalSum-sum);
+        
+        return ar;
+        
+        
+    }
+}
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        int len=nums.length;
+        HashSet<Integer> hs =new HashSet<>();
+        ArrayList<Integer> ar =new ArrayList<>();
+        
+        for(int i=0;i<len;i++)
+            hs.add(nums[i]);
+        
+        for(int i=1;i<=len;i++)
+        {
+            if(!hs.contains(i))
+                ar.add(i);
+        }
+        
+        return ar;
+    }
+}
+public class Solution {
+    // DO NOT MODIFY THE LIST
+    public int repeatedNumber(final List<Integer> a) {
+        
+        HashMap<Integer,Integer> map =new HashMap<>();
+        
+         for(int i=0;i<a.size();i++)
+        {
+            if(!map.containsKey(a.get(i)))
+            map.put(a.get(i),1);
+            else
+            map.put(a.get(i),map.get(a.get(i))+1);
+        }
+       
+        for(Map.Entry<Integer,Integer> entry:map.entrySet())
+        {
+            if(entry.getValue()>(a.size()/3))
+               return entry.getKey();
+        }
+        
+        return -1;
+    }
+}
+
+
+
