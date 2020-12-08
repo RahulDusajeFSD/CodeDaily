@@ -1,0 +1,39 @@
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        
+        ArrayList<Integer> A =new ArrayList<>();
+        for(int i=0;i<nums.length;i++)
+            A.add(nums[i]);
+        
+        Collections.sort(A);
+      
+      for(int i=1;i<=A.size()+1;i++)
+      {
+          if(!A.contains(i))
+          return i;
+      }
+      
+      return 1;
+        
+}
+}
+
+    
+      
+        int[] a =new int[A.size()];
+       
+       for(int i=0;i<A.size();i++)
+       a[i]=A.get(i);
+       
+       for(int i=0;i<a.length;i++)
+       {
+           int index=a[i]%a.length;
+           a[index]+=a.length;
+       }
+       
+       for(int i=0;i<a.length;i++)
+       {
+           if((a[i]/a.length)>=2)
+           return i;
+       }
+       return 0;
