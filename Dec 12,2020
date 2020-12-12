@@ -1,0 +1,19 @@
+public class Solution {
+    public String solve(String A) {
+        
+        StringTokenizer st=new StringTokenizer(A);
+        Stack<String> s=new Stack<>();
+        while(st.hasMoreTokens())
+        {
+            s.push(st.nextToken());
+        }
+        String res="";
+        while(s.size()>1)
+        {
+            res=res+s.pop()+" ";
+        }
+        res+=s.pop();
+        
+        return res;
+    }
+}
