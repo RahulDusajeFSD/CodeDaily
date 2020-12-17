@@ -1,0 +1,63 @@
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     ListNode(int x) { val = x; next = null; }
+ * }
+ */
+public class Solution {
+    public ListNode deleteDuplicates(ListNode A) {
+        
+        Set<Integer> lhs = new LinkedHashSet<>();
+        
+        while(A!=null)
+        {
+            lhs.add(A.val);
+            A=A.next;
+        }
+        
+        ListNode res = new ListNode(0);
+        ListNode p=res;
+        
+        for(int i:lhs)
+        {
+            res.next=new ListNode(i);
+            res=res.next;
+        }
+        
+        return p.next;
+    }
+}
+
+
+
+public class Solution {
+    public int lPalin(ListNode A) {
+        
+        String s="";
+        String res="";
+        
+        Stack<Integer> st =new Stack<>();
+        
+        while(A!=null)
+        {
+            s+=A.val;
+            st.push(A.val);
+            A=A.next;
+        }
+        
+        while(st.size()>0)
+        res+=st.pop();
+        
+        
+        if(s.equals(res))
+        return 1;
+        
+        return 0;
+        
+        
+    }
+}
