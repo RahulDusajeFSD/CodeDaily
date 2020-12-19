@@ -1,0 +1,41 @@
+
+
+
+
+public class Solution {
+    public ListNode deleteDuplicates(ListNode A) {
+        
+        Map<Integer,Integer> map =new LinkedHashMap<>();
+        
+        while(A!=null)
+        {
+            if(!map.containsKey(A.val))
+            map.put(A.val,1);
+            else
+            map.put(A.val,map.get(A.val)+1);
+            
+            A=A.next;
+        }
+        
+        ListNode res=new ListNode(0);
+        ListNode ptrToRes=res;
+        
+        
+        for(Map.Entry<Integer,Integer> entry:map.entrySet())
+        {
+            if(entry.getValue()==1)
+            {
+                res.next=new ListNode(entry.getKey());
+                res=res.next;
+            }
+            
+            
+        }
+        
+        return ptrToRes.next;
+    }
+}
+
+
+
+
