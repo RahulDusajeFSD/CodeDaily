@@ -1,0 +1,84 @@
+
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        
+        if(arr.length==1)
+            return new int[]{-1};
+        
+        
+        int[] res=new int[arr.length];
+        
+       for(int i=0;i<arr.length-2;i++)
+       {
+           res[i]=returnMax(i+1,arr.length-1,arr);
+       }
+        
+        res[arr.length-2]=arr[arr.length-1];
+        res[arr.length-1]=-1;
+        
+        return res;
+        
+        
+    }
+    
+    public int returnMax(int a,int b, int[] arr)
+    {
+        int max=0;
+        
+        for(int i=a;i<=b;i++)
+        {
+            if(arr[i]>max)
+                max=arr[i];
+        }
+        
+        return max;
+    }
+}
+
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        ArrayList<Integer> ar=new ArrayList<>();
+        
+        
+        for(int i=0;i<matrix.length;i++)
+        {
+            for(int j=0;j<matrix[i].length;j++)
+            {
+                ar.add(matrix[i][j]);
+            }
+        }
+        
+        Collections.sort(ar);
+        
+        Integer index=Collections.binarySearch(ar,target);
+        
+        if(index<0)
+            return false;
+        
+        return true;
+    }
+}
+
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        
+        int j=0;
+    for(int i=0;i<nums.length;i++)
+    {
+        if(nums[i]!=0)
+            nums[j++]=nums[i];
+    }
+        
+        while(j<nums.length)
+        {
+            nums[j++]=0;
+        }
+                
+    }
+}
+
+
+
