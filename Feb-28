@@ -1,0 +1,91 @@
+206. Reverse Linked List 
+
+The below approach uses Stack.
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        
+       ListNode temp = new ListNode(0);
+
+       ListNode res = temp;
+
+
+        Stack<ListNode> s = new Stack<>();
+       while(head != null){
+           s.push(head);
+           head=head.next;
+       }
+
+       while(s.size()!=0){
+           res.next = s.pop();
+        
+          res=res.next;
+       }    
+
+       res.next= null;
+
+       return temp.next;
+    }
+}
+
+
+
+
+876. Middle of the Linked List
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        
+      //  ListNode temp = head;
+
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+
+        while(fastPointer != null && fastPointer.next != null){
+
+
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+
+        return slowPointer;
+
+
+
+    }
+}
+
+
+
+706. Design HashMap
+
+class MyHashMap {
+
+    int[] arr;
+
+    public MyHashMap() {
+        arr = new int[1000001];
+        Arrays.fill(arr, -1);
+    }
+    
+    public void put(int key, int value) {
+        arr[key] = value;
+    }
+    
+    public int get(int key) {
+        return arr[key];
+    }
+    
+    public void remove(int key) {
+        arr[key] = -1;
+    }
+}
+
+
+620. Not Boring Movies
+
+select id, movie, description, rating from Cinema where
+case when id % 2 = 1 then id.  -- to check if num is odd using case - when - then -end
+and description <> 'boring'. -- <> means not equals
+end. -- to close case statement
+order by rating desc
